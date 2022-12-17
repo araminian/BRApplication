@@ -5,6 +5,7 @@ build:
     - image: rminz/BR-Application
       docker:
         dockerfile: ci/Dockerfile
+      context: .
   tagPolicy:
     gitCommit:
       ignoreChanges: true
