@@ -1,0 +1,12 @@
+apiVersion: skaffold/v3
+kind: Config
+build:
+  artifacts:
+    - image: rminz/BR-Application
+      docker:
+        dockerfile: ci/Dockerfile
+  tagPolicy:
+    gitCommit:
+      ignoreChanges: true
+  local:
+    push: true
