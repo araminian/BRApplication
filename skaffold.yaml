@@ -2,7 +2,7 @@ apiVersion: skaffold/v3
 kind: Config
 build:
   artifacts:
-    - image: rminz/BR-Application
+    - image: rminz/br-application
       docker:
         dockerfile: ci/Dockerfile
       context: .
@@ -11,3 +11,14 @@ build:
       ignoreChanges: true
   local:
     push: true
+manifests:
+  helm:
+    releases:
+      - name: "{{.ENVIRONMENT}}"
+        chartPath: ci/charts/BR
+        setValueTemplates:
+          global.environment: "{{.ENVIRONMENT}}"
+          global.region: "{{.REGION}}"
+          global.image.repository: "{{.IMAGE_REPO}}"
+          global.image.tag: "{{.ENVIRONMENT}}"
+          global.image.digest: "{{.IMAGE_DIGEST}}"

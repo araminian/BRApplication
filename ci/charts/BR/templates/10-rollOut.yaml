@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: bluegreen-application
+  namespace: {{ $.Values.global.service }}
+  labels:
+    {{- include "br.labels" $ | nindent 4 }}
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      {{- include "br.selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "br.labels" $ | nindent 8 }}
+    spec:
+      containers:
+        - name: br
+          image: {{ printf "%s:%s@%s" $.Values.global.image.repository $.Values.global.image.tag $.Values.global.image.digest }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+  strategy:
+    blueGreen:
+      autoPromotionEnabled: false
+      activeService: bluegreen-demo
+      previewService: bluegreen-demo-preview
