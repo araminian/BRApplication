@@ -8,7 +8,7 @@ CI_DIR := "ci"
 GIT_REV := `git rev-parse --short=16 HEAD`
 GITHUB_USERNAME := "araminian"
 GITHUB_TOKEN := env_var_or_default('RE_BOT',"")
-GITOPS_REPO := "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com:araminian/gitops-manifests.git"
+GITOPS_REPO := "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/araminian/gitops-manifests.git"
 GITOPS_REPO_USER := "git@github.com:araminian/gitops-manifests.git"
 GITOPS_DIR := CI_DIR +"/gitops"
 GITOPS_FLAGS := "-C $GITOPS_DIR"
