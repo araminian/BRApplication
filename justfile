@@ -47,7 +47,7 @@ gitops-repo-diff:
 # Clone GitOps repository
 gitops-repo-clone:
     #!/usr/bin/env bash
-    set -euxo pipefail
+    set -euo pipefail
     rm -rf $GITOPS_DIR
 
     if [[ -z ${CI+x} ]]; then
