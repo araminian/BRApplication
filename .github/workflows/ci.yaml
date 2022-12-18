@@ -62,4 +62,5 @@ jobs:
 
       - name: Deploy
         run: |-
+          just gitops-repo-clone
           just apply prod europe-west4
