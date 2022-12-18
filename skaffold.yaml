@@ -6,6 +6,8 @@ build:
       docker:
         dockerfile: ci/Dockerfile
       context: .
+      platforms:
+        - linux/arm64
   tagPolicy:
     gitCommit:
       ignoreChanges: true
