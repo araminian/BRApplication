@@ -12,5 +12,5 @@ Selector labels
 {{- define "br.selectorLabels" -}}
 app.kubernetes.io/type: '{{ .Chart.Name | lower }}'
 environment: '{{ .Values.global.environment }}'
-app: 'BR'
+app: 'blue-green'
 {{- end -}}

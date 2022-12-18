@@ -37,7 +37,7 @@ apply ENVIRONMENT REGION: (plan ENVIRONMENT REGION)
       --author "BR CI <rmin.aminian@gmail.com>" \
       --message 'BR : new {{ENVIRONMENT}} release' \
       --message 'From BR application@{{GIT_REV}}'
-  # git {{GITOPS_FLAGS}} push origin HEAD:main
+  git {{GITOPS_FLAGS}} push origin HEAD:main
 
 # Git Diff
 gitops-repo-diff:
