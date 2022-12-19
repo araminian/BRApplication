@@ -24,3 +24,4 @@ manifests:
           global.image.repository: "{{.IMAGE_REPO}}"
           global.image.tag: "{{.ENVIRONMENT}}"
           global.image.digest: "{{.IMAGE_DIGEST}}"
+          global.version: "{{.GIT_REV}}"

@@ -24,6 +24,9 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: cm
   strategy:
     blueGreen:
       autoPromotionEnabled: false
