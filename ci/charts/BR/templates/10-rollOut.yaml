@@ -32,7 +32,7 @@ spec:
       autoPromotionEnabled: false
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
-      analysis:
+      prePromotionAnalysis:
         templates:
         - templateName: sample
 
