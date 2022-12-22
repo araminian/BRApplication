@@ -14,8 +14,7 @@ spec:
             spec:
               containers:
               - name: sample
-                image: docker/whalesay
-                command:
-                  - cowsay
-                  - "BOOO"
+                image: busybox
+                command: ["/bin/sh"]
+                args: ["-c", "echo 'BOOM';exit 0;"]
               restartPolicy: Never
