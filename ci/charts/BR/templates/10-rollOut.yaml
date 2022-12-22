@@ -32,3 +32,8 @@ spec:
       autoPromotionEnabled: false
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
+      analysis:
+        templates:
+        - templateName: sample
+
+

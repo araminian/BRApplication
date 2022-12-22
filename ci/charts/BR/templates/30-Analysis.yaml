@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: sample
+  namespace: {{ $.Values.global.service }}
+spec:
+  metrics:
+  - name: sample
+    provider:
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: sample
+                image: docker/whalesay
+                command:
+                  - cowsay
+                  - "BOOO"
+              restartPolicy: Never
