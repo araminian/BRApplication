@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: sample
+  namespace: {{ $.Values.global.service }}
+spec:
+  metrics:
+  - name: post-sample
+    provider:
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: post-sample
+                image: busybox
+                command: ["/bin/sh"]
+                args: ["-c", "echo 'BOOM! POST-TEST!';exit 0;"]
+              restartPolicy: Never

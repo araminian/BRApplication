@@ -35,5 +35,8 @@ spec:
       prePromotionAnalysis:
         templates:
         - templateName: sample
+      postPromotionAnalysis:
+        templates:
+        - templateName: post-sample
 
 
