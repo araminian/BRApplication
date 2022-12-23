@@ -16,5 +16,5 @@ spec:
               - name: post-sample
                 image: busybox
                 command: ["/bin/sh"]
-                args: ["-c", "echo 'BOOM! POST-TEST!';exit 1;"]
+                args: ["-c", "echo 'BOOM! POST-TEST!';exit 0;"]
               restartPolicy: Never
