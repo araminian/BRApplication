@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
-  name: sample
+  name: post-sample
   namespace: {{ $.Values.global.service }}
 spec:
   metrics:
