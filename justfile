@@ -5,7 +5,8 @@ set positional-arguments
 CI_DIR := "ci"
 
 # Git
-GIT_REV := `git rev-parse --short=16 HEAD`
+GIT_REV := `git rev-parse --short=8 HEAD`
+GIT_BRANCH := `git rev-parse --abbrev-ref HEAD`
 GITHUB_USERNAME := "araminian"
 GITHUB_TOKEN := env_var_or_default('RE_BOT',"")
 GITOPS_REPO := "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/araminian/gitops-manifests.git"

@@ -9,8 +9,8 @@ build:
       platforms:
         - linux/arm64
   tagPolicy:
-    gitCommit:
-      ignoreChanges: true
+    envTemplate:
+      template: "{{.GIT_REV}}"
   local:
     push: true
 manifests:
