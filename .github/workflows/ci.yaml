@@ -48,6 +48,7 @@ jobs:
           just build
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs: build
     steps:
       - name: Checkout
