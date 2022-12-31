@@ -18,7 +18,11 @@ spec:
     spec:
       containers:
         - name: br
+          {{ if $.Values.global.image.digest }}
           image: {{ printf "%s:%s@%s" $.Values.global.image.repository $.Values.global.image.tag $.Values.global.image.digest }}
+          {{ else }}
+          image: {{ printf "%s:%s" $.Values.global.image.repository $.Values.global.image.tag }}
+          {{ end }}
           imagePullPolicy: Always
           ports:
             - name: http
