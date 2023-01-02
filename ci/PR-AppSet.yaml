@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: br-pr
+  namespace: argocd
+spec:
+  generators:
+    - pullRequest:
+        github:
+          # The GitHub organization or user.
+          owner: araminian
+          # The Github repository
+          repo: BRApplication
+          # Labels is used to filter the PRs that you want to target. (optional)
+          labels:
+            - preview
+        requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: "br-{{branch}}-{{number}}"
+    spec:
+      source:
+        repoURL: "https://github.com/araminian/BRApplication.git"
+        targetRevision: "{{head_sha}}"
+        path: ci/charts/BR
+        helm:
+          parameters:
+            - name: "global.service"
+              value: "br-{{branch}}-{{number}}"
+            - name: "global.image.tag"
+              value: "{{head_short_sha}}"
+            - name: "global.image.repository"
+              value: "rminz/br-application"
+            - name: "global.environment"
+              value: "preview"
+            - name: "global.region"
+              value: "europe-west4"
+            - name: "global.version"
+              value: "{{head_short_sha}}"
+      project: "default"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "br-{{branch}}-{{number}}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
