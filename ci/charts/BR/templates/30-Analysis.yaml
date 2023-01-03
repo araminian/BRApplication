@@ -16,5 +16,5 @@ spec:
               - name: sample
                 image: busybox
                 command: ["/bin/sh"]
-                args: ["-c", "echo 'BOOM';exit 0;"]
+                args: ["-c", "echo 'BOOM';exit 1;"]
               restartPolicy: Never
