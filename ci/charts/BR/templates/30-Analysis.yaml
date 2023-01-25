@@ -12,6 +12,7 @@ spec:
           backoffLimit: 1
           template:
             spec:
+              serviceAccountName: br
               containers:
               - name: sample
                 image: busybox
