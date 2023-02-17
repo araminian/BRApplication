@@ -20,6 +20,5 @@ jobs:
           labels: |
             ${{ env.label }}
       - name: test
-        if: ${{ github.event.pull_request.closed == true }}
         run: |
-          echo "This is closed"
+          echo ${{ github.event }}
