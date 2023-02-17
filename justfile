@@ -4,7 +4,7 @@ set positional-arguments
 
 CI_DIR := "ci"
 
-# Git
+## Git
 GIT_REV := `git rev-parse --short=8 HEAD`
 GIT_BRANCH := `git rev-parse --abbrev-ref HEAD`
 GITHUB_USERNAME := "araminian"
