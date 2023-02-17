@@ -2,7 +2,7 @@ name: Add Labels
 
 on:
   pull_request:
-    types: opened
+    branches: [main]
 env:
   label: advertisers
 jobs:
@@ -14,3 +14,7 @@ jobs:
         with:
           labels: |
             ${{ env.label }}
+      - name: test
+        if: ${{ github.event.pull_request.closed == true }}
+        run: |
+          echo "This is closed"
