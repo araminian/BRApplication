@@ -21,4 +21,5 @@ jobs:
             ${{ env.label }}
       - name: test
         run: |
-          echo ${{ github.event }}
+          echo $GITHUB_EVENT_NAME
+          echo ${{ github.event.action }}
