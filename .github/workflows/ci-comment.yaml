@@ -1,0 +1,23 @@
+name: CI-Comment-PR
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+  actions: read
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        service: ["foo", "bar"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096
+        with:
+          message: |
+            ${{matrix.service}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          message-id: ${{ matrix.service }}
