@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        required: true
+        default: publish
+        description: Schema Check or Publish
+        options:
+        - check
+        - publish
+      environment:
+        type: choice
+        description: Select the environment for schema
+        required: true
+        default: stage
+        options:
+        - prod
+        - stage
+      service:
+        type: choice
+        description: Selec a service
+        required: true
+        options:
+        - geo-features
+        - destination-daily-affordability
+        - accommodation-units
+        - concept-translations
+        - forwarder
+        - static-advertiser-link
+        - accommodation-review
+        - concept-deals-search
+        - accommodation-forecasted-prices
+        - accommodation-rating-aspects
+        - url-generation
+        - accommodation-seo-lookup
+        - seo-content
+        - accommodation-aggregated-advertiser-ratings
+        - destinations
+        - accommodation-features
+        - accommodation-special-offers
+        - cip-resolver
+        - price-impression-logger
+        - destination-monthly-affordability
+        - accommodations
+        - concept-distances
+        - favorite
+        - accommodation-advertiser-references
+        - advertisers
+        - ideal-standard-date
+        - points-of-interest
+        - accommodation-seo-review
+        - accommodation-descriptions
+        - book-on-meta
+        - price-drop-alerts
+        - main-images
+        - suggestions
+        - snippet-translations
+        - accommodation-images
+        - currency-conversion-rates
+        - destination-main-images
+        - page-log
+        - accommodation-highlights
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: greet
+        run: | 
+          echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
+          echo "service is ${{ github.event.inputs.service }}" / ${{ inputs.service }} 
+          echo "mode is ${{ github.event.inputs.mode }}" / ${{ inputs.mode }}
